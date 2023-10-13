@@ -1,0 +1,70 @@
+.quote-app {
+  font-family: Calibri, sans-serif;
+  background-color: #4169e1;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  margin: 0 auto;
+  padding: 8px;
+}
+
+.quote-field {
+  background-color: white;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.quote-header {
+  font-weight: bold;
+  font-size: 28px;
+}
+
+.quote-text {
+  margin: 16px 0;
+  font-size: 18px;
+}
+
+.quote-text>span {
+  font-family: Arial, sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.quote-author {
+  text-align: right;
+  font-style: italic;
+  font-size: 14px;
+}
+
+.quote-buttons {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid lightgray;
+  margin-top: 16px;
+  padding-top: 16px;
+}
+
+.social-btns {
+  display: flex;
+  gap: 8px;
+}
+
+.social-btn {
+  color: #4169e1;
+  border: 1px solid #4169e1;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  text-decoration: none;
+}
+
+.quote-next {
+  background-color: #4169e1;
+  color: white;
+  width: 96px;
+  border: none;
+  border-radius: 16px;
+}

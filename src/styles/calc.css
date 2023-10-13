@@ -1,0 +1,57 @@
+.calc {
+  background-color: black;
+  width: 352px;
+  margin: 16px auto 0;
+  padding: 16px;
+}
+
+.calc-display {
+  font-size: 48px;
+  color: white;
+  padding: 8px;
+  text-align: right;
+}
+
+.calc-display-help {
+  height: 24px;
+  position: relative;
+  top: -16px;
+  font-size: 20px;
+  color: white;
+  text-align: right;
+  margin-right: 12px;
+}
+
+.calc-line>button,
+.calc-button {
+  font-size: 40px;
+  width: 80px;
+  height: 80px;
+  cursor: pointer;
+}
+
+.button-2x {
+  width: 160px;
+}
+
+.button-3x {
+  width: 240px;
+}
+
+.calc-action {
+  background-color: orange;
+  color: white;
+}
+
+.calc-action:hover {
+  background-color: #fab432;
+}
+
+.calc-clear {
+  background-color: gray;
+  color: white;
+}
+
+.calc-clear:hover {
+  background-color: #a8a8a8;
+}

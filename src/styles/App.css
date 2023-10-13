@@ -1,0 +1,146 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+
+:root {
+  --white: #f9f9f9;
+  --black: #36383F;
+  --grey: #85888C;
+}
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--white);
+  font-family: "Poppins", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* *** Home page *** */
+.home {
+  max-width: 1100px;
+  margin: 80px auto 0;
+  padding: 16px;
+  text-align: center;
+}
+
+.home__items {
+  margin: 40px auto 0;
+  width: 100%;
+  max-width: 500px;
+}
+
+.home__item {
+  font-size: 18px;
+  background-color: #4169e1;
+  color: var(--white);
+  margin-bottom: 16px;
+  padding: 12px 0;
+  border-radius: 10px;
+  box-shadow: 6px 6px 20px rgb(0 0 0 / 40%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.5s;
+}
+
+.home__item:hover {
+  transform: scale(1.07);
+  transition: all 0.5s;
+}
+
+/* Error page */
+.error-page h2 {
+  margin: 80px 20px;
+  text-align: center;
+}
+
+.error-page h3 {
+  margin: 0 30px;
+  text-align: center;
+}
+
+/* All task-pages style */
+.task-page {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.task-side {
+  width: 450px;
+  padding: 24px;
+}
+
+.task-side__header {
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.task-side ul {
+  margin-left: 20px;
+}
+
+.task-side__img {
+  margin-top: 16px;
+  height: 380px;
+}
+
+.task-side__img-w {
+  margin-top: 16px;
+  width: 100%;
+}
+
+.decision-side {
+  width: 500px;
+}
+
+.decision-side>h2 {
+  text-align: center;
+  margin: 16px;
+}
+
+.task-side,
+.decision-side {
+  margin: 8px 0;
+  background-color: #F5F5F5;
+  box-shadow: 6px 6px 20px rgb(0 0 0 / 40%);
+}
+
+/* Portfolio block */
+.portfolio {
+  max-width: 480px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.skills-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  width: 200px;
+  list-style: none;
+  cursor: pointer;
+}
+
+.skill-item {
+  width: 200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid lightgray;
+  padding: 2px;
+  margin: 4px;
+}
+
+.skill-item img {
+  height: 50px;
+}

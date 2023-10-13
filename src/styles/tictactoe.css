@@ -1,0 +1,95 @@
+.game-block {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.button-newgame {
+    font-size: 18px;
+    padding: 4px;
+}
+
+.game-field {
+    width: fit-content;
+    margin: 0 auto 16px;
+}
+
+.game-field>div {
+    display: flex;
+}
+
+.game-field>div>div {
+    width: 100px;
+    height: 100px;
+    font-size: 80px;
+    background-color: lightyellow;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-field>div:not(:last-child) {
+    border-bottom: 1px solid black;
+}
+
+.game-field>div>div:not(:last-child) {
+    border-right: 1px solid black;
+}
+
+.game-block__result {
+    margin: 16px 0 8px;
+    font-weight: bold;
+}
+
+.winner-line-all {
+    border: 5px solid red;
+    border-radius: 8px;
+    width: 300px;
+    position: relative;
+    top: -2500px;
+    margin: 0 auto;
+}
+
+.winner-line-h1 {
+    top: 54px;
+}
+
+.winner-line-h2 {
+    top: 154px;
+}
+
+.winner-line-h3 {
+    top: 254px;
+}
+
+.winner-line-v1 {
+    top: 156px;
+    right: 100px;
+    transform: rotate(90deg);
+}
+
+.winner-line-v2 {
+    top: 156px;
+    transform: rotate(90deg);
+}
+
+.winner-line-v3 {
+    top: 156px;
+    left: 100px;
+    transform: rotate(90deg);
+}
+
+.winner-line-d1 {
+    top: 156px;
+    right: 10px;
+    width: 420px;
+    transform: rotate(45deg);
+}
+
+.winner-line-d2 {
+    top: 156px;
+    right: 10px;
+    width: 420px;
+    transform: rotate(135deg);
+}

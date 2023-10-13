@@ -1,0 +1,139 @@
+.animals-app {
+    background-color: #F6F6F6;
+    max-width: 840px;
+    width: 100%;
+    margin: 16px auto;
+    box-shadow: 6px 6px 20px rgb(0 0 0 / 40%);
+}
+
+.animals-header {
+    height: 80px;
+    width: 100%;
+    display: flex;
+}
+
+.animals-header__nav {
+    width: 100%;
+    margin: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+}
+
+.animals-header-mi {
+    padding: 12px 16px 16px;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.animals-header-active {
+    background-color: lightgreen;
+}
+
+.animals-header__logo {
+    margin-right: 16px;
+    width: 240px;
+    height: auto;
+    background-image: url("../../public/redi.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.animals-list {
+    padding: 0 16px 16px;
+}
+
+.animal-info {
+    background-color: #fff;
+    margin-top: 16px;
+    padding: 16px;
+    border-radius: 8px;
+    display: flex;
+}
+
+.animal-info>figure {
+    min-width: 200px;
+    height: 200px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    margin-inline-start: 0;
+    margin-inline-end: 32px;
+    border-radius: 120px;
+}
+
+.animal-info>figure>img {
+    height: 100%;
+}
+
+.animal-info__descr {
+    margin-bottom: 16px;
+}
+
+.animal-info__location {
+    font-weight: bold;
+    color: gray;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+@media (max-width: 767px) {
+    .animal-info__location {
+        display: block;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .animals-header__logo {
+        width: 220px;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+    .animals-header__logo {
+        margin-right: 12px;
+        width: 200px;
+    }
+
+    .animals-header__nav {
+        font-size: 14px;
+        gap: 12px;
+    }
+
+    .animal-info {
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    .animal-info>figure {
+        min-width: 160px;
+        height: 160px;
+    }
+
+}
+
+@media (max-width: 480px) {
+    .animals-header__logo {
+        margin-right: 8px;
+        width: 180px;
+    }
+
+    .animals-header__nav {
+        font-size: 12px;
+        gap: 8px;
+    }
+
+    .animal-info {
+        padding: 8px;
+        font-size: 12px;
+    }
+
+    .animal-info>figure {
+        min-width: 80px;
+        height: 80px;
+    }
+
+}

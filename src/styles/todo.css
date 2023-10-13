@@ -1,0 +1,80 @@
+.to-do-app {
+    width: 100%;
+    margin: 0 auto;
+    padding: 8px;
+    text-align: center;
+}
+
+.item-addbtn {
+    width: 40px;
+    height: 40px;
+    font-size: 32px;
+}
+
+.edit-block {
+    background-color: lightyellow;
+    padding: 8px;
+    text-align: left;
+}
+
+.edit-line {
+    display: flex;
+    align-items: center;
+}
+
+.edit-line>label {
+    min-width: 100px;
+}
+
+.input-field {
+    width: 100%;
+    margin: 8px;
+    height: 20px;
+}
+
+.edit-block__btns {
+    margin-top: 8px;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.item-todo {
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    max-width: 100%;
+    padding: 8px;
+    margin: 8px 0;
+}
+
+.item-highpriority {
+    background-color: rgb(245, 98, 98);
+}
+
+.item-mediumpriority {
+    background-color: orange;
+}
+
+.item-notcompleted {
+    background-color: lightskyblue;
+}
+
+.item-completed {
+    background-color: lightgreen;
+}
+
+.item-overdue {
+    background-color: red;
+    color: white;
+    margin-left: 16px;
+    padding: 4px 16px;
+}
+
+.button-task {
+    cursor: pointer;
+    border-radius: 16px;
+    margin-right: 8px;
+    background-color: transparent;
+}
