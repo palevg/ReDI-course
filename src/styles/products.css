@@ -1,0 +1,26 @@
+.products {
+    margin: 16px;
+    width: 250px;
+}
+
+.check-stock {
+    display: block;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.products-table {
+    width: 100%;
+}
+
+.name-col {
+    width: 200px;
+}
+
+th {
+    padding: 4px;
+}
+
+td {
+    padding: 2px;
+}

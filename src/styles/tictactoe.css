@@ -4,7 +4,7 @@
     text-align: center;
 }
 
-.button-newgame {
+.button-game {
     font-size: 18px;
     padding: 4px;
 }
@@ -52,15 +52,15 @@
 }
 
 .winner-line-h1 {
-    top: 54px;
+    top: 55px;
 }
 
 .winner-line-h2 {
-    top: 154px;
+    top: 156px;
 }
 
 .winner-line-h3 {
-    top: 254px;
+    top: 257px;
 }
 
 .winner-line-v1 {
@@ -82,14 +82,12 @@
 
 .winner-line-d1 {
     top: 156px;
-    right: 10px;
     width: 420px;
     transform: rotate(45deg);
 }
 
 .winner-line-d2 {
     top: 156px;
-    right: 10px;
     width: 420px;
     transform: rotate(135deg);
 }

@@ -11,6 +11,7 @@ const Home = () => {
         <Link className="home__item" to="/calculator">Lesson 8 - Mini Apps: "Basic Calculator"</Link>
         <Link className="home__item" to="/quotes">Lesson 8 - Mini Apps: "Random Quote Generator"</Link>
         <Link className="home__item" to="/tic-tac-toe">Lesson 8 - Mini Apps: "Tic-Tac-Toe Game"</Link>
+        <Link className="home__item" to="/products">Lesson 10 - Thema: "Thinking in React"</Link>
       </div>
     </div>
   )
