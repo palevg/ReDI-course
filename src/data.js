@@ -5,7 +5,7 @@ export const animals = [
     img: "./animals/Red-Panda.jpeg",
     description:
       "The red panda has thick red fur and a striped, bushy tail. It is about the size and weight of a domestic cat. Its mischievous face and playful behavior have made it a favorite among people visiting zoos and sanctuaries.",
-    region: "China"
+    region: "China",
   },
   {
     name: "Meerkat",
@@ -14,7 +14,7 @@ export const animals = [
     description:
       "The meerkat is not a cat. It’s actually a small mongoose. Native to southern Africa, the meerkat has enormous eyes and a long tail. Meerkats have incredibly cute behavior, including sitting up high on their hind legs and looking around.",
     region: "Africa",
-    selectorsChoice: true
+    selectorsChoice: true,
   },
   {
     name: "hedgehog",
@@ -22,7 +22,7 @@ export const animals = [
     img: "./animals/Hedgehog.jpeg",
     description:
       "This tiny creature is known for its round, spiked body and intensely adorable facial expression. The hedgehog is a member of the Erinaceinae family. There are 15 species of hedgehog. This cute critter lives in Europe, Asia, and Africa. Hedgehogs were introduced to New Zealand. There are no hedgehogs in Australia or North America. Hedgehogs are tiny, but they are not defenseless. Their sharp teeth and spines make them difficult for predators to catch and eat.",
-    region: "Europe"
+    region: "Europe",
   },
   {
     name: "Quokka",
@@ -30,7 +30,7 @@ export const animals = [
     img: "./animals/Quokka.jpeg",
     description:
       "The quokka is also known as the short-tailed scrub wallaby. It is a small, round creature about the size of a cat. Its face looks like a cross between a mouse and a rabbit. The quokka is a marsupial. It’s nocturnal and carries its young in a pouch.",
-    region: "Australia"
+    region: "Australia",
   },
   {
     name: "Sea Otter",
@@ -39,8 +39,8 @@ export const animals = [
     description:
       "Recently, a sea otter named Joey captured the hearts of YouTube viewers who watched as he was rescued from near death and raised at an otter sanctuary in Canada. Joey’s daily fight for survival and his love of toys drew millions of viewers. That’s not surprising, since a sea otter is one of the most adorable animals on land or sea. The smallest marine mammal, the sea otter is a marine mammal native to the coasts of the northern and eastern North Pacific Ocean. About 90% of the world’s sea otters live in Alaska.",
     region: "Alaska",
-    selectorsChoice: true
-  }
+    selectorsChoice: true,
+  },
 ];
 
 export const mySkills = [
@@ -58,7 +58,7 @@ export const mySkills = [
     name: "CSS",
     img: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/CSS3_logo_and_wordmark.svg/langfr-130px-CSS3_logo_and_wordmark.svg.png",
     description: "I know how to align elemnts with flexbox",
-  }
+  },
 ];
 
 export const initialToDoList = [
@@ -82,7 +82,7 @@ export const initialToDoList = [
     id: 3456791,
     priority: "Low",
     deadline: "2023-10-09T10:00",
-  }
+  },
 ];
 
 export const miniApps = [
@@ -102,7 +102,7 @@ export const miniApps = [
       "use a <li> tag to render each skill group",
       'add the class "skill-item" to your <li> to use the pre-defined CSS rules',
       "do not forget to pass a unique key to your <li>",
-    ]
+    ],
   },
   {
     name: "Emoji Mood Tracker",
@@ -127,7 +127,7 @@ export const miniApps = [
       "Allow users to check tasks as completed or uncompleted.",
       "Enable users to edit and update task names.",
       "Allow users to delete tasks.",
-    ]
+    ],
   },
   {
     name: "Basic Calculator",
@@ -139,7 +139,7 @@ export const miniApps = [
       "Allow users to input mathematical expressions.",
       "Implement the functionality to perform basic calculations.",
       "Display the result of the calculation.",
-    ]
+    ],
   },
   {
     name: "Random Quote Generator",
@@ -151,7 +151,7 @@ export const miniApps = [
       "Implement a button that generates and displays a random quote when clicked.",
       "Display the author's name along with each quote.",
       "Allow users to share the displayed quote on social media.",
-    ]
+    ],
   },
   {
     name: "Tic-Tac-Toe Game",
@@ -163,6 +163,18 @@ export const miniApps = [
       "Alternate between X and O for each player's turn.",
       "Check for a win condition (three in a row horizontally, vertically, or diagonally) and declare a winner.",
       "Implement a reset button to start a new game.",
-    ]
-  }
+    ],
+  },
+  {
+    name: "Thinking in React",
+    image: "lesson10.jpg",
+    description: "Implement a UI in React.",
+    requirements: [
+      "Step 1: Break the UI into a component hierarchy.",
+      "Step 2: Build a static version in React.",
+      "Step 3: Find the minimal but complete representation of UI state.",
+      "Step 4: Identify where your state should live.",
+      "Step 5: Add inverse data flow",
+    ],
+  },
 ];

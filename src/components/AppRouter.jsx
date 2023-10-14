@@ -7,7 +7,7 @@ import ToDoPage from '../pages/ToDo';
 import TicTacToePage from '../pages/Tic-Tac-Toe';
 import CalcPage from "../pages/Calc";
 import QuotesPage from '../pages/Quotes';
-import Products from './Products';
+import ProductsPage from '../pages/Products';
 
 const AppRouter = () => {
 
@@ -20,7 +20,7 @@ const AppRouter = () => {
       <Route path='/tic-tac-toe' element={<TicTacToePage />} />
       <Route path='/calculator' element={<CalcPage />} />
       <Route path='/quotes' element={<QuotesPage />} />
-      <Route path='/products' element={<Products />} />
+      <Route path='/products' element={<ProductsPage />} />
       <Route path="*" element={<Error />} />
     </Routes>
   )

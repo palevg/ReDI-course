@@ -14,8 +14,6 @@ export default function Header() {
       <label className="hamb" htmlFor="side-menu"><span className="hamb-line"></span></label>
       <nav className="nav">
         <ul className="menu" onClick={handleMenuClick}>
-          {/* <li><Link to="/animals">Animals</Link></li> */}
-          <li><Link to="/portfolio">Portfolio</Link></li>
           <li><Link to="/todo">ToDo App</Link></li>
           <li><Link to="/calculator">Calculator</Link></li>
           <li><Link to="/quotes">Quotes</Link></li>
