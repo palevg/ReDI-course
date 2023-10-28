@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+.activity-app {
+    font-family: 'Inter', sans-serif;
+    width: 100%;
+    padding: 8px;
+    background-color: #fff;
+    border: 1px solid black;
+}
+
+.filter-bar {
+    margin-bottom: 24px;
+}
+
+.filter-bar>div:first-child {
+    font-size: 18px;
+}
+
+.filter-bar__activities {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    font-size: 14px;
+}
+
+.activity-type__enabled,
+.activity-type__disabled {
+    width: 140px;
+    padding: 8px;
+    text-align: center;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.activity-type__enabled {
+    background-color: #D9D9D9;
+}
+
+.activity-type__disabled {
+    border: 1px solid #B4B4B4;
+    color: #989898;
+}
+
+.activity-type__filter {
+    background-color: gray;
+    color: #fff;
+}
+
+.activities-period {
+    font-size: 10px;
+    font-style: italic;
+    margin-top: 16px;
+}
+
+.activity-item {
+    display: flex;
+    align-items: center;
+    height: 32px;
+    cursor: pointer;
+}
+
+.activity-item:hover {
+    background-color: #F6F6F6;
+}
+
+.activity-item__label {
+    min-width: 16px;
+}
+
+.activity-item__date {
+    min-width: 110px;
+}
+
+.activity-item__type {
+    min-width: 160px;
+}
+
+.activity-item__title {
+    width: 100%;
+}
+
+.activity-item img {
+    height: 16px;
+}
+
+.more-info {
+    background-color: #F6F6F6;
+    margin-top: 4px;
+    padding: 16px;
+    display: none;
+}
+
+.more-info__block+div:not(:first-child) {
+    margin-top: 32px;
+}
+
+.more-info__header {
+    color: #707070;
+    font-size: 14px;
+}
+
+.more-info__text {
+    margin-top: 12px;
+    font-size: 13px;
+}
+
+.show-more {
+    display: none;
+}
+
+.show-more:checked+div {
+    display: block;
+}

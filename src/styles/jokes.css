@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600&display=swap');
+
+:root {
+    --viol: #585CE5;
+    --grey_j: #7B7B7B;
+    --grey_n: #DEDEDE;
+    --white_cl: #fff;
+  }
+
+.jokes-app {
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 600;
+    width: 362px;
+    margin: 0 auto;
+    padding: 16px;
+}
+
+.jokes-nav {
+    width: 100%;
+    display: flex;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 38px;
+}
+
+.jokes-nav>div:first-child {
+    border-radius: 8px 0 0 8px;
+}
+
+.jokes-nav>div:last-child {
+    border-radius: 0 8px 8px 0;
+}
+
+.jokes-nav__section {
+    width: 50%;
+    padding: 8px 0;
+    background-color: var(--grey_n);
+    cursor: pointer;
+}
+
+.section--selected {
+    background-color: var(--viol);
+    color: var(--white_cl);
+}
+
+.joke {
+    background-color: var(--white_cl);
+    min-height: 148px;
+    margin-top: 24px;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 6px 6px 20px rgb(0 0 0 / 20%);
+}
+
+.joke__type {
+    color: var(--grey_j);
+    font-size: 12px;
+    margin-bottom: 16px;
+}
+
+.joke__info {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.joke__question {
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.joke__answer {
+    font-weight: 400;
+}
+
+.joke__button {
+    color: var(--viol);
+    border: 1px solid var(--viol);
+    border-radius: 8px;
+    padding: 4px;
+    width: 156px;
+    text-align: right;
+    cursor: pointer;
+}
+
+.joke__button img {
+    margin: 0 16px 0 24px;
+}
+
+.joke__bookmark {
+    cursor: pointer;
+}
+
+.jokes-library--empty {
+    margin-top: 32px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.jokes-refresh {
+    background-color: var(--viol);
+    width: fit-content;
+    margin: 16px auto 0;
+    padding: 16px 16px 10px;
+    border-radius: 40px;
+    cursor: pointer;
+}

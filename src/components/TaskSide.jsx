@@ -16,7 +16,9 @@ export default function TaskSide({ appNumber, imageClass, }) {
         </ul>
       </div>}
       <img className={imageClass} src={miniApps[appNumber].image} alt={miniApps[appNumber].name} />
-      {appNumber === 0 && <a href="https://codesandbox.io/s/portfolio-skills-list-unnwl" target="_blank" rel="noopener noreferrer">Original task link</a>}
+      {"link" in miniApps[appNumber] && <div>
+        <a href={miniApps[appNumber].link} target="_blank" rel="noopener noreferrer">{miniApps[appNumber].linkText}</a>
+      </div>}
     </div>
   )
 }

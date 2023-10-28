@@ -8,6 +8,8 @@ import TicTacToePage from '../pages/Tic-Tac-Toe';
 import CalcPage from "../pages/Calc";
 import QuotesPage from '../pages/Quotes';
 import ProductsPage from '../pages/Products';
+import UserPage from '../pages/UserPage';
+import Jokes from '../pages/Jokes';
 
 const AppRouter = () => {
 
@@ -21,6 +23,8 @@ const AppRouter = () => {
       <Route path='/calculator' element={<CalcPage />} />
       <Route path='/quotes' element={<QuotesPage />} />
       <Route path='/products' element={<ProductsPage />} />
+      <Route path='/activity' element={<UserPage />} />
+      <Route path='/jokes' element={<Jokes />} />
       <Route path="*" element={<Error />} />
     </Routes>
   )
