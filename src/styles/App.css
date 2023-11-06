@@ -33,15 +33,19 @@ a {
 .home__items {
   margin: 40px auto 0;
   width: 100%;
-  max-width: 500px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .home__item {
   font-size: 18px;
+  width: 480px;
   background-color: #4169e1;
   color: var(--white);
   margin-bottom: 16px;
-  padding: 12px 0;
+  padding: 12px 8px;
   border-radius: 10px;
   box-shadow: 6px 6px 20px rgb(0 0 0 / 40%);
   display: flex;

@@ -9,7 +9,8 @@ const links = [
   { page: "/tic-tac-toe", text: 'Lesson 8 - Mini Apps: "Tic-Tac-Toe Game"' },
   { page: "/products", text: 'Lesson 10 - Thema: "Thinking in React"' },
   { page: "/activity", text: 'Lesson 14 - Mini Apps 2: "Activity page of user"' },
-  { page: "/jokes", text: 'Lesson 14 - Mini Apps 2: "Jokes app"' }
+  { page: "/jokes", text: 'Lesson 14 - Mini Apps 2: "Jokes app"' },
+  { page: "/brewdog", text: 'Final Project: "BrewDog Beer Recipes"' }
 ];
 
 export default function Home() {

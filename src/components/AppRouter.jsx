@@ -10,6 +10,8 @@ import QuotesPage from '../pages/Quotes';
 import ProductsPage from '../pages/Products';
 import UserPage from '../pages/UserPage';
 import Jokes from '../pages/Jokes';
+import FinalProject from '../pages/FinalProj';
+import BrewdogRecipes from '../pages/BrewdogRecipes';
 
 const AppRouter = () => {
 
@@ -25,6 +27,8 @@ const AppRouter = () => {
       <Route path='/products' element={<ProductsPage />} />
       <Route path='/activity' element={<UserPage />} />
       <Route path='/jokes' element={<Jokes />} />
+      <Route path='/brewdog' element={<FinalProject />} />
+      <Route path='/brewdog/recipes' element={<BrewdogRecipes />} />
       <Route path="*" element={<Error />} />
     </Routes>
   )
