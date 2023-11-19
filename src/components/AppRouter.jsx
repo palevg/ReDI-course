@@ -10,8 +10,9 @@ import QuotesPage from '../pages/Quotes';
 import ProductsPage from '../pages/Products';
 import UserPage from '../pages/UserPage';
 import Jokes from '../pages/Jokes';
-import FinalProject from '../pages/FinalProj';
-import BrewdogRecipes from '../pages/BrewdogRecipes';
+import FinalProject from '../pages/FinalProject/FinalProj';
+import BrewdogRecipes from '../pages/FinalProject/BrewdogRecipes';
+import RecipePage from '../pages/FinalProject/Recipe';
 
 const AppRouter = () => {
 
@@ -29,6 +30,7 @@ const AppRouter = () => {
       <Route path='/jokes' element={<Jokes />} />
       <Route path='/brewdog' element={<FinalProject />} />
       <Route path='/brewdog/recipes' element={<BrewdogRecipes />} />
+      <Route path='/brewdog/recipes/:id' element={<RecipePage />} />
       <Route path="*" element={<Error />} />
     </Routes>
   )

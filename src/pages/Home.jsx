@@ -17,7 +17,7 @@ export default function Home() {
   return (
     <div className="home">
       <h1>My Homeworks of&nbsp;React&nbsp;class in&nbsp;
-        <a href="https://www.redi-school.org/" target="_blank" rel="noopener noreferrer">ReDI&nbsp;School</a> (IX-X.2023)</h1>
+        <a href="https://www.redi-school.org/" target="_blank" rel="noopener noreferrer">ReDI&nbsp;School</a> (IX-XI.2023)</h1>
       <div className="home__items">
         {links.map(item => <Link key={item.page} className="home__item" to={item.page}>{item.text}</Link>)}
       </div>

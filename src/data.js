@@ -1,3 +1,15 @@
+import { Button } from "@mui/material";
+import { styled } from '@mui/material/styles';
+import { yellow } from '@mui/material/colors';
+
+export const MyButton = styled(Button)(({ theme }) => ({
+  color: theme.palette.getContrastText(yellow[500]),
+  backgroundColor: yellow[500],
+  '&:hover': {
+    backgroundColor: yellow[700],
+  },
+}));
+
 export const animals = [
   {
     name: "Red Panda",
@@ -216,3 +228,5 @@ export const miniApps = [
     linkText: "API link"
   }
 ];
+
+export const URL_API = "https://api.punkapi.com/v2/beers";

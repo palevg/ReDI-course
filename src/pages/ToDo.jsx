@@ -1,5 +1,5 @@
 import TaskSide from "../components/TaskSide";
-import ToDoApp from "../components/ToDo";
+import ToDoApp from "../components/ToDo/ToDoApp";
 
 export default function ToDoPage() {
   return (

@@ -1,11 +1,11 @@
 import { useState } from "react";
-import ToDoEdit from "./ToDoEdit";
+import ItemEdit from "./ItemEdit";
 
-const ToDoNew = ({ listToDo, setListToDo }) => {
+const ItemAdd = ({ listToDo, setListToDo }) => {
   const [editMode, setEditMode] = useState(false);
 
   return editMode ? (
-    <ToDoEdit
+    <ItemEdit
       task=""
       setEditMode={setEditMode}
       listToDo={listToDo}
@@ -18,4 +18,4 @@ const ToDoNew = ({ listToDo, setListToDo }) => {
   );
 };
 
-export default ToDoNew;
+export default ItemAdd;
