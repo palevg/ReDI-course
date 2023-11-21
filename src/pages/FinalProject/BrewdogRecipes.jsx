@@ -2,7 +2,7 @@ import { useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { DataContext } from "../../context/DataContext";
 import { URL_API, MyButton } from '../../data';
-import { Dialog, Box, DialogContent, DialogActions, Typography, Slider, Button } from "@mui/material";
+import { Dialog, Box, DialogContent, DialogActions, TextField, MenuItem, Typography, Slider, Button } from "@mui/material";
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import FilterAltOffIcon from '@mui/icons-material/FilterAltOff';
@@ -16,16 +16,16 @@ function FilterBar({ setFilteredList, filterText, setFilterText }) {
       onClick={() => navigate("/brewdog")}
       variant="contained"
       startIcon={<ChevronLeftIcon />}>Brewdog main page</MyButton>
-    <Typography sx={{ mt: 1 }}>{filterText}</Typography>
+    <Typography sx={{ mt: 1, fontSize: 14 }}>{filterText}</Typography>
     <MyButton
       onClick={() => setOpenDialog(true)}
       variant="contained"
-      startIcon={<FilterAltIcon />}>Filter</MyButton>
+      startIcon={<FilterAltIcon />}>Filter & Sort</MyButton>
     <FilterDialog openDialog={openDialog} setOpenDialog={setOpenDialog} setFilteredList={setFilteredList} setFilterText={setFilterText} />
   </div>
 }
 
-function updateFilteredList(yearValue, abvValue, ibuValue, recipesList) {
+function updateFilteredList(yearValue, abvValue, ibuValue, recipesList, sortValue) {
   const newList = [];
   recipesList.forEach(element => {
     let isFiltered = true;
@@ -34,18 +34,28 @@ function updateFilteredList(yearValue, abvValue, ibuValue, recipesList) {
       if (!(+element.abv >= abvValue[0] && +element.abv <= abvValue[1])) isFiltered = false;
     if (isFiltered && element.ibu !== null)
       if (!(+element.ibu >= ibuValue[0] && +element.ibu <= ibuValue[1])) isFiltered = false;
-    if (isFiltered) {
-      newList.push(element)
-    }
+    isFiltered && newList.push(element);
   });
+  sortValue === "name" && newList.sort((a, b) => a.name > b.name ? 1 : -1);
+  sortValue === "nameReverse" && newList.sort((a, b) => a.name > b.name ? -1 : 1);
+  sortValue === "year" && newList.sort((a, b) => a.first_brewed.split("/").reverse().join("/") > b.first_brewed.split("/").reverse().join("/") ? 1 : -1);
+  sortValue === "yearReverse" && newList.sort((a, b) => a.first_brewed.split("/").reverse().join("/") > b.first_brewed.split("/").reverse().join("/") ? -1 : 1);
   return newList;
 }
+
+const sortFields = [
+  { value: 'name', label: 'Name (A → Z)' },
+  { value: 'nameReverse', label: 'Name (Z → A)' },
+  { value: 'year', label: 'First brewed year (old → new)' },
+  { value: 'yearReverse', label: 'First brewed year (new → old)' }
+];
 
 function FilterDialog({ openDialog, setOpenDialog, setFilteredList, setFilterText }) {
   const { recipesList, MinMaxValues } = useContext(DataContext);
   const [yearValue, setYearValue] = useState([+MinMaxValues.yearMin, +MinMaxValues.yearMax]);
   const [abvValue, setAbvValue] = useState([+MinMaxValues.abvMin, +MinMaxValues.abvMax]);
   const [ibuValue, setIbuValue] = useState([+MinMaxValues.ibuMin, +MinMaxValues.ibuMax]);
+  const [sortValue, setSortValue] = useState(sortFields[0].value);
 
   function handleClearFilters() {
     setYearValue([+MinMaxValues.yearMin, +MinMaxValues.yearMax]);
@@ -60,12 +70,14 @@ function FilterDialog({ openDialog, setOpenDialog, setFilteredList, setFilterTex
     window.localStorage.setItem("abvMax", abvValue[1]);
     window.localStorage.setItem("ibuMin", ibuValue[0]);
     window.localStorage.setItem("ibuMax", ibuValue[1]);
-    setFilterText(`Filtered: years ${yearValue[0]}-${yearValue[1]}; ABV ${abvValue[0]}-${abvValue[1]}; IBU ${ibuValue[0]}-${ibuValue[1]}`);
-    setFilteredList(updateFilteredList(yearValue, abvValue, ibuValue, recipesList));
+    window.localStorage.setItem("sorting", sortValue);
+    setFilterText(`Filtered: years ${yearValue[0]}-${yearValue[1]}; ABV ${abvValue[0]}-${abvValue[1]}; IBU ${ibuValue[0]}-${ibuValue[1]}. Sorted by ${sortFields.filter(field => field.value === sortValue)[0].label}`);
+    setFilteredList(updateFilteredList(yearValue, abvValue, ibuValue, recipesList, sortValue));
     setOpenDialog(false);
   }
 
   useEffect(() => {
+    if (window.localStorage.getItem('sorting')) setSortValue(window.localStorage.getItem('sorting'));
     if (window.localStorage.getItem('yearMin') && window.localStorage.getItem('yearMax'))
       setYearValue([+window.localStorage.getItem('yearMin'), +window.localStorage.getItem('yearMax')]);
     if (window.localStorage.getItem('abvMin') && window.localStorage.getItem('abvMax'))
@@ -77,6 +89,21 @@ function FilterDialog({ openDialog, setOpenDialog, setFilteredList, setFilterTex
   return <Dialog maxWidth="xs" open={openDialog}>
     <Box sx={{ p: 1 }}>
       <DialogContent>
+        <TextField
+          select
+          label="Sort by"
+          value={sortValue}
+          onChange={(event) => setSortValue(event.target.value)}
+          size="small"
+          sx={{ mb: 2 }}
+          fullWidth
+        >
+          {sortFields.map((option) => (
+            <MenuItem key={option.value} value={option.value}>
+              {option.label}
+            </MenuItem>
+          ))}
+        </TextField>
         <Typography gutterBottom>Year of first brewed</Typography>
         <Slider
           getAriaLabel={() => 'Year range'}
@@ -182,8 +209,11 @@ export default function BrewdogRecipes() {
     userFilter.abvMax = getStorageItem('abvMax', MinMaxValues.abvMax);
     userFilter.ibuMin = getStorageItem('ibuMin', MinMaxValues.ibuMin);
     userFilter.ibuMax = getStorageItem('ibuMax', MinMaxValues.ibuMax);
-    setFilterText(`Filtered: years ${userFilter.yearMin}-${userFilter.yearMax}; ABV ${userFilter.abvMin}-${userFilter.abvMax}; IBU ${userFilter.ibuMin}-${userFilter.ibuMax}`);
-    setFilteredList(updateFilteredList([userFilter.yearMin, userFilter.yearMax], [userFilter.abvMin, userFilter.abvMax], [userFilter.ibuMin, userFilter.ibuMax], recipesList));
+    window.localStorage.getItem('sorting')
+      ? userFilter.sorting = window.localStorage.getItem('sorting')
+      : userFilter.sorting = "name"
+    setFilterText(`Filtered: years ${userFilter.yearMin}-${userFilter.yearMax}; ABV ${userFilter.abvMin}-${userFilter.abvMax}; IBU ${userFilter.ibuMin}-${userFilter.ibuMax}. Sorted by ${sortFields.filter(field => field.value === userFilter.sorting)[0].label}`);
+    setFilteredList(updateFilteredList([userFilter.yearMin, userFilter.yearMax], [userFilter.abvMin, userFilter.abvMax], [userFilter.ibuMin, userFilter.ibuMax], recipesList, userFilter.sorting));
   }, []);
 
   return <div className="recipes-background">

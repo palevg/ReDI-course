@@ -1,2 +1,2 @@
 # ReDI-course
-My Homeworks of React class in ReDI School (September-October 2023)
+My Homeworks and FinalProject of React class in ReDI School (September-Nowember 2023)
