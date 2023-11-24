@@ -228,5 +228,3 @@ export const miniApps = [
     linkText: "API link"
   }
 ];
-
-export const URL_API = "https://api.punkapi.com/v2/beers";

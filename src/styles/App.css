@@ -61,7 +61,7 @@ a {
 
 /* Error page */
 .error-page h2 {
-  margin: 80px 20px;
+  padding: 80px 20px;
   text-align: center;
 }
 

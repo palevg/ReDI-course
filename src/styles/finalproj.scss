@@ -3,6 +3,7 @@
 :root {
     --yellow: #FFD700;
     --blue: blue;
+    --recipe: #FFF5EE;
 }
 
 .final-project {
@@ -51,8 +52,13 @@
 .recipes-filter {
     padding: 8px 32px;
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+
+    @media (max-width: 560px) {
+        justify-content: center;
+    }
 }
 
 .recipes-list {
@@ -61,6 +67,32 @@
     flex-wrap: wrap;
     gap: 16px;
     padding: 8px 8px 80px;
+
+    .load-more {
+        background-color: var(--recipe);
+        background-image: url('../../public/refresh.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        border-radius: 16px;
+        box-shadow: 6px 6px 20px rgb(0 0 0 / 10%);
+        transition: all .5s;
+        width: 200px;
+        height: 200px;
+        font-size: 18px;
+        text-align: center;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        div {
+            width: min-content;
+        }
+
+        &:hover {
+            box-shadow: 6px 6px 20px rgb(0 0 0 / 40%);
+        }
+    }
 }
 
 .empty-list {
@@ -77,6 +109,10 @@
     width: 280px;
     height: 404px;
 
+    @media (max-width: 767px) {
+        height: fit-content;
+    }
+
     .recipe__wrapper {
         position: relative;
         min-height: 404px;
@@ -85,15 +121,26 @@
         box-shadow: 6px 6px 20px rgb(0 0 0 / 10%);
         transition: all .5s;
         z-index: 0;
-        background-color: #FFF5EE;
+        background-color: var(--recipe);
         border-radius: 16px;
         padding: 16px;
 
         &:hover {
             box-shadow: 6px 6px 20px rgb(0 0 0 / 40%);
-            height: fit-content;
-            z-index: 2;
         }
+
+        @media (max-width: 767px) {
+            min-height: 0;
+            height: fit-content;
+        }
+
+        @media (min-width: 768px) {
+            &:hover {
+                height: fit-content;
+                z-index: 2;
+            }
+        }
+
     }
 
     .recipe__header {
@@ -238,6 +285,10 @@
     border: 1px solid #888;
     border-radius: 12px;
     position: relative;
+
+    &:hover .hint {
+        display: block;
+    }
 }
 
 .hint {
@@ -270,17 +321,11 @@
     }
 }
 
-.question:hover .hint {
-    display: block;
+@media (max-width: 767px) {
+    .recipe__description {
+        display: none;
+    }
 }
-
-// @media (min-width: 481px) {
-
-// }
-
-
-
-// @media (min-width: 768px) and (max-width: 991px)
 
 @media (min-width: 481px) and (max-width: 767px) {
     .recipe-details__text {
