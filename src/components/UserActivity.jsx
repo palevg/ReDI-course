@@ -1,6 +1,9 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { activityTypes } from "../data";
+import UserActivities from "../UserActivities.json";
 import "../styles/activity.css";
+
+const userInfo = UserActivities.data.sort((a,b) => a.date > b.date ? -1 : 1);
 
 function ActivityType(props) {
 
@@ -114,23 +117,23 @@ function SummaryBlock({ children, header }) {
 }
 
 export default function UserActivity() {
-  const [userInfo, setUserInfo] = useState([]);
+  // const [userInfo, setUserInfo] = useState([]);
   const [filteredType, setFilteredType] = useState(null);
   const filteredInfo = filteredType === null ? userInfo : userInfo.filter(item => item.type === filteredType);
 
-  const getUserInfo = async () => {
-    try {
-      const res = await fetch("http://ec2-3-67-177-63.eu-central-1.compute.amazonaws.com:8055/items/userActivities");
-      const data = await res.json();
-      return setUserInfo(data.data.sort((a, b) => a.date > b.date ? -1 : 1));
-    } catch (err) {
-      return console.log(err);
-    }
-  };
+  // const getUserInfo = async () => {
+  //   try {
+  //     const res = await fetch("http://ec2-3-67-177-63.eu-central-1.compute.amazonaws.com:8055/items/userActivities");
+  //     const data = await res.json();
+  //     return setUserInfo(data.data.sort((a, b) => a.date > b.date ? -1 : 1));
+  //   } catch (err) {
+  //     return console.log(err);
+  //   }
+  // };
 
-  useEffect(() => {
-    getUserInfo();
-  }, []);
+  // useEffect(() => {
+  //   getUserInfo();
+  // }, []);
 
   return <div className="activity-app">
     <FilterBar userInfo={userInfo} filteredType={filteredType} setFilteredType={setFilteredType} />

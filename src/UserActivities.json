@@ -1,0 +1,115 @@
+{
+    "data":
+    [
+        {
+            "id": 1,
+            "date_created": "2023-10-24T20:16:04.215Z",
+            "date": "2023-11-24T12:00:00",
+            "type": "questionnaire",
+            "title": "PHQ-9",
+            "summary": "Result: 10",
+            "detail1": "The Patient Health Questionnaire-9 (PHQ-9) is a widely used and respected self-assessment tool designed to screen and assess the severity of depressive symptoms in individuals. Comprising nine questions, the PHQ-9 inquires about common symptoms of depression, such as low mood, loss of interest or pleasure, changes in appetite and sleep patterns, and thoughts of self-harm.",
+            "detail2": "Each item is scored on a scale from 0 to 3, and the total score provides a quantitative measure of the individual's depression severity, ranging from minimal (0-4) to severe (20-27). Healthcare professionals often employ the PHQ-9 in clinical settings to assist in diagnosing and monitoring depression, making it a valuable instrument for both initial assessments and ongoing treatment evaluation.",
+            "patient": "ac3cda69-f5fa-4a61-975a-2bcdd4a05005"
+        },
+        {
+            "id": 2,
+            "date_created": "2023-10-24T20:53:52.366Z",
+            "date": "2023-11-30T12:00:00",
+            "type": "exercise",
+            "title": "Autogenic training",
+            "summary": "Autogenic training is a powerful relaxation technique that helps individuals achieve a state of deep mental and physical relaxation. To begin your autogenic training exercise, find a quiet and comfortable place to sit or lie down. Close your eyes and take a few deep breaths to center yourself. Now, focus your attention on your body and begin to feel the weight of your body against the surface you're resting on. Allow any tension or stress to gradually melt away as you let yourself sink into a state of calm.",
+            "detail1": "In the second phase of the exercise, concentrate on your breath. Inhale deeply and exhale slowly, all the while paying attention to the rise and fall of your chest and the sensation of the breath flowing in and out. As you continue to breathe, imagine a warm, soothing sensation spreading throughout your body, starting from your toes and moving upward. Visualize this warmth as a comforting, healing energy that washes away any remaining tension, leaving you in a state of total relaxation.",
+            "detail2": "In the final phase, focus on affirmations or mental images that promote tranquility and positivity. You might repeat phrases like \"I am calm and at peace\" or \"I am in control of my relaxation.\" As you do this, you'll reinforce a sense of inner calm and self-assurance. Autogenic training is a practice that can be customized to suit your specific needs and preferences, but the ultimate goal remains the same: achieving a profound sense of relaxation and inner harmony.",
+            "patient": "ac3cda69-f5fa-4a61-975a-2bcdd4a05005"
+        },
+        {
+            "id": 3,
+            "date_created": "2023-10-24T20:54:36.197Z",
+            "date": "2023-11-22T12:00:00",
+            "type": "questionnaire",
+            "title": "Anamnese",
+            "summary": "Result: okay",
+            "detail1": "After conducting a comprehensive anamnese questionnaire with the patient, several noteworthy insights emerged. Firstly, the patient's medical history revealed a family predisposition to cardiovascular conditions, with both parents having a history of hypertension. ",
+            "detail2": "Furthermore, the patient disclosed a consistent smoking habit of 15 years, which significantly increases their risk of cardiovascular issues and respiratory complications. In addition, the questionnaire highlighted a recurring pattern of stress and anxiety, potentially contributing to the patient's high blood pressure. This anamnese underscores the importance of addressing lifestyle factors, such as smoking cessation and stress management, in conjunction with a personalized cardiovascular risk reduction plan.",
+            "patient": "ac3cda69-f5fa-4a61-975a-2bcdd4a05005"
+        },
+        {
+            "id": 4,
+            "date_created": "2023-10-24T20:55:50.798Z",
+            "date": "2023-12-01T12:00:00",
+            "type": "questionnaire",
+            "title": "PHQ-9",
+            "summary": "not yet done",
+            "detail1": null,
+            "detail2": null,
+            "patient": "ac3cda69-f5fa-4a61-975a-2bcdd4a05005"
+        },
+        {
+            "id": 5,
+            "date_created": "2023-10-24T20:56:34.401Z",
+            "date": "2023-11-09T12:00:00",
+            "type": "exercise",
+            "title": "Value or target?",
+            "summary": "Exercise with audio instructions",
+            "detail1": "Identifying and clarifying one's values is a process that involves introspection and self-reflection. It requires individuals to explore their core beliefs and principles, pinpoint what matters most to them, and determine the guiding principles that steer their decisions and actions. ",
+            "detail2": "This exercise, or rather, this self-discovery process, helps people gain a clearer sense of purpose and direction in their lives. ",
+            "patient": "ac3cda69-f5fa-4a61-975a-2bcdd4a05005"
+        },
+        {
+            "id": 6,
+            "date_created": "2023-10-24T20:57:14.370Z",
+            "date": "2023-11-01T12:00:00",
+            "type": "exercise",
+            "title": "A perfect day",
+            "summary": "Exercise with interactive content",
+            "detail1": "\"A Perfect Day\" is an invigorating exercise that encourages individuals to imagine their ideal day from start to finish. Whether it's a day filled with adventure, relaxation, or productivity, this exercise prompts people to vividly describe every detail, from the moment they wake up to the final moments before bedtime. ",
+            "detail2": "By doing so, it not only helps them tap into their desires and priorities but also serves as a valuable tool for goal setting and creating a roadmap to turn their dreams into reality. This exercise can be a powerful source of motivation and clarity, fostering a sense of purpose in one's daily life.",
+            "patient": "ac3cda69-f5fa-4a61-975a-2bcdd4a05005"
+        },
+        {
+            "id": 7,
+            "date_created": "2023-10-24T20:57:48.033Z",
+            "date": "2023-10-19T12:00:00",
+            "type": "exercise",
+            "title": "Introduction",
+            "summary": "Basics for all exercises",
+            "detail1": null,
+            "detail2": null,
+            "patient": "ac3cda69-f5fa-4a61-975a-2bcdd4a05005"
+        },
+        {
+            "id": 8,
+            "date_created": "2023-10-24T20:58:18.288Z",
+            "date": "2023-10-18T12:00:00",
+            "type": "goal",
+            "title": "Sport",
+            "summary": "Exercise every day",
+            "detail1": null,
+            "detail2": null,
+            "patient": "ac3cda69-f5fa-4a61-975a-2bcdd4a05005"
+        },
+        {
+            "id": 9,
+            "date_created": "2023-10-24T21:02:07.922Z",
+            "date": "2023-10-01T12:00:00",
+            "type": "journaltherapy",
+            "title": "Therapy entry",
+            "summary": "Today, we talked about psychotherapy in general.",
+            "detail1": "How should I react, when I have a conflict with my partner?\n\nSleeping problems - especially when I have to work the next day",
+            "detail2": "SEW analysis",
+            "patient": "ac3cda69-f5fa-4a61-975a-2bcdd4a05005"
+        },
+        {
+            "id": 10,
+            "date_created": "2023-10-24T21:13:06.602Z",
+            "date": "2023-10-11T12:00:00",
+            "type": "journalgratitude",
+            "title": "Sunny day in Munich",
+            "summary": "I found solace in the serene Englischer Garten, where locals basked in the warmth, and the Eisbach surfers rode the perpetual wave. ",
+            "detail1": "The sky, a brilliant blue canvas, seemed to stretch endlessly above, and the cheerful chatter of cafe-goers filled the air. ",
+            "detail2": "Each entry in my gratitude journal serves as a testament to the serenity and happiness this sunny day in Munich brought into my life, a reminder to savor these moments of pure contentment.",
+            "patient": "ac3cda69-f5fa-4a61-975a-2bcdd4a05005"
+        }
+    ]
+}
