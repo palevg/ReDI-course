@@ -3,39 +3,61 @@ import { DataContext } from "../../context/DataContext";
 import { Dialog, Box, DialogContent, TextField, DialogActions, Typography, Slider, Button } from "@mui/material";
 import FilterAltOffIcon from '@mui/icons-material/FilterAltOff';
 
-export default function FilterDialog({ openDialog, setOpenDialog, fetchRecipes }) {
+export default function FilterDialog({ openDialog, setOpenDialog, fetchRecipes, setSearchParams }) {
   const { MinMaxValues, setFilterOptions } = useContext(DataContext);
+  const [searchName, setSearchName] = useState('');
   const [yearValue, setYearValue] = useState([MinMaxValues.yearMin, MinMaxValues.yearMax]);
   const [abvValue, setAbvValue] = useState([MinMaxValues.abvMin, MinMaxValues.abvMax]);
   const [ibuValue, setIbuValue] = useState([MinMaxValues.ibuMin, MinMaxValues.ibuMax]);
-  const [searchName, setSearchName] = useState(window.localStorage.getItem('name') || '');
 
   function handleClearFilters() {
     setSearchName('');
     setYearValue([MinMaxValues.yearMin, MinMaxValues.yearMax]);
     setAbvValue([MinMaxValues.abvMin, MinMaxValues.abvMax]);
     setIbuValue([MinMaxValues.ibuMin, MinMaxValues.ibuMax]);
-    setFilterOptions('');
   }
 
   function handleSetFilters() {
+    window.localStorage.setItem("name", searchName);
     window.localStorage.setItem("yearMin", yearValue[0]);
     window.localStorage.setItem("yearMax", yearValue[1]);
     window.localStorage.setItem("abvMin", abvValue[0]);
     window.localStorage.setItem("abvMax", abvValue[1]);
     window.localStorage.setItem("ibuMin", ibuValue[0]);
     window.localStorage.setItem("ibuMax", ibuValue[1]);
-    window.localStorage.setItem("name", searchName);
 
+    const searchValues = {}
     let filters = '';
-    if (yearValue[0] !== MinMaxValues.yearMin) filters += "&brewed_after=01-" + yearValue[0];
-    if (yearValue[1] !== MinMaxValues.yearMax) filters += "&brewed_before=12-" + yearValue[1];
-    if (abvValue[0] !== MinMaxValues.abvMin) filters += "&abv_gt=" + abvValue[0];
-    if (abvValue[1] !== MinMaxValues.abvMax) filters += "&abv_lt=" + abvValue[1];
-    if (ibuValue[0] !== MinMaxValues.ibuMin) filters += "&ibu_gt=" + ibuValue[0];
-    if (ibuValue[1] !== MinMaxValues.ibuMax) filters += "&ibu_lt=" + ibuValue[1];
-    if (searchName !== '') filters += "&beer_name=" + searchName;
+    if (yearValue[0] !== MinMaxValues.yearMin) {
+      filters += "&brewed_after=01-" + yearValue[0];
+      searchValues.brewed_year_min = yearValue[0];
+    }
+    if (yearValue[1] !== MinMaxValues.yearMax) {
+      filters += "&brewed_before=12-" + yearValue[1];
+      searchValues.brewed_year_max = yearValue[1];
+    }
+    if (abvValue[0] !== MinMaxValues.abvMin) {
+      filters += "&abv_gt=" + abvValue[0];
+      searchValues.abv_min = abvValue[0];
+    }
+    if (abvValue[1] !== MinMaxValues.abvMax) {
+      filters += "&abv_lt=" + abvValue[1];
+      searchValues.abv_max = abvValue[1];
+    }
+    if (ibuValue[0] !== MinMaxValues.ibuMin) {
+      filters += "&ibu_gt=" + ibuValue[0];
+      searchValues.ibu_min = ibuValue[0];
+    }
+    if (ibuValue[1] !== MinMaxValues.ibuMax) {
+      filters += "&ibu_lt=" + ibuValue[1];
+      searchValues.ibu_max = ibuValue[1];
+    }
+    if (searchName !== '') {
+      filters += "&beer_name=" + searchName;
+      searchValues.name = searchName;
+    }
     setFilterOptions(filters);
+    setSearchParams(searchValues);
     fetchRecipes(true, 1, filters);
     setOpenDialog(false);
   }

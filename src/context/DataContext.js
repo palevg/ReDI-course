@@ -21,8 +21,8 @@ export const DataContextProvider = ({ children }) => {
   return (
     <DataContext.Provider
       value={{
-        recipesList, setRecipesList, MinMaxValues, pageToLoad, setPageToLoad,
-        filterOptions, setFilterOptions, isLoadMore, setIsLoadMore
+        MinMaxValues, recipesList, setRecipesList, filterOptions, setFilterOptions,
+        pageToLoad, setPageToLoad, isLoadMore, setIsLoadMore
       }}>
       {children}
     </DataContext.Provider>

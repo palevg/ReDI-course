@@ -79,21 +79,21 @@ export const initialToDoList = [
     complete: false,
     id: 3456789,
     priority: "Medium",
-    deadline: "2023-10-13T10:00"
+    deadline: "2023-11-28T10:00"
   },
   {
     todo: "Task2",
     complete: false,
     id: 3456790,
     priority: "High",
-    deadline: "2023-10-11T10:00"
+    deadline: "2023-12-01T10:00"
   },
   {
     todo: "Task3",
     complete: false,
     id: 3456791,
     priority: "Low",
-    deadline: "2023-10-09T10:00"
+    deadline: "2023-12-09T10:00"
   }
 ];
 

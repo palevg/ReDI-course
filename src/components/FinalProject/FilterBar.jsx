@@ -15,7 +15,7 @@ const sortFields = [
   { value: 'yearReverse', label: 'First brewed year (new → old)' }
 ];
 
-export default function FilterBar({ fetchRecipes }) {
+export default function FilterBar({ fetchRecipes, setSearchParams }) {
   const { recipesList, setRecipesList } = useContext(DataContext);
   const [openDialog, setOpenDialog] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
@@ -72,6 +72,10 @@ export default function FilterBar({ fetchRecipes }) {
         variant="contained"
         startIcon={<FilterAltIcon />}>Filter</MyButton>
     </div>
-    <FilterDialog openDialog={openDialog} setOpenDialog={setOpenDialog} fetchRecipes={fetchRecipes} />
+    <FilterDialog
+      openDialog={openDialog}
+      setOpenDialog={setOpenDialog}
+      fetchRecipes={fetchRecipes}
+      setSearchParams={setSearchParams} />
   </div>
 }

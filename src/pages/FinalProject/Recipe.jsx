@@ -65,127 +65,127 @@ export default function RecipePage() {
     fetchRecipe();
   }, [params.id]);
 
-  return "name" in recipe
-    ? <div className="recipes-background">
-      <div>
-        <MyButton
-          onClick={() => navigate("/brewdog/recipes")}
-          sx={{ mt: 2, ml: 4 }}
-          variant="contained"
-          startIcon={<ChevronLeftIcon />}>Back to the List</MyButton>
-        <h2 className="recipe-name">{recipe.name}</h2>
-        <div className="recipe-details">
-          <div className="recipe-details__img">
-            <img src={recipe.image_url} alt={recipe.name} />
+  return isLoading
+    ? <div className="recipes-background"><Loader /></div>
+    : "name" in recipe
+      ? <div className="recipes-background">
+        <div>
+          <MyButton
+            onClick={() => navigate("/brewdog/recipes")}
+            sx={{ mt: 2, ml: 4 }}
+            variant="contained"
+            startIcon={<ChevronLeftIcon />}>Back to the List</MyButton>
+          <h2 className="recipe-name">{recipe.name}</h2>
+          <div className="recipe-details">
+            <div className="recipe-details__img">
+              <img src={recipe.image_url} alt={recipe.name} />
+            </div>
+            <div className="recipe-details__text">
+              {recipeItem.map(item =>
+                <div key={item.name} className="recipe-details__row">
+                  <div className="recipe-details__row-name">
+                    {item.name}:
+                    {item.hint && <AddInfo hint={item.hint} header={item.header} />}
+                  </div>
+                  <div className="recipe-details__row-value">{item.value}</div>
+                </div>)}
+              <div className="recipe-details__row">
+                <div className="recipe-details__row-name">Volume:</div>
+                <div className="recipe-details__row-value">{recipe.volume.value} {recipe.volume.unit}</div>
+              </div>
+              <div className="recipe-details__row">
+                <div className="recipe-details__row-name">Boil volume:</div>
+                <div className="recipe-details__row-value">{recipe.boil_volume.value} {recipe.boil_volume.unit}</div>
+              </div>
+            </div>
           </div>
-          <div className="recipe-details__text">
-            {recipeItem.map(item =>
-              <div key={item.name} className="recipe-details__row">
-                <div className="recipe-details__row-name">
-                  {item.name}:
-                  {item.hint && <AddInfo hint={item.hint} header={item.header} />}
-                </div>
-                <div className="recipe-details__row-value">{item.value}</div>
-              </div>)}
-            <div className="recipe-details__row">
-              <div className="recipe-details__row-name">Volume:</div>
-              <div className="recipe-details__row-value">{recipe.volume.value} {recipe.volume.unit}</div>
-            </div>
-            <div className="recipe-details__row">
-              <div className="recipe-details__row-name">Boil volume:</div>
-              <div className="recipe-details__row-value">{recipe.boil_volume.value} {recipe.boil_volume.unit}</div>
-            </div>
-          </div>
-        </div>
-        <div className="recipe-details">
-          <div className="recipe-details__text">
-            <div className="recipe-details__method">Method:</div>
-            <ul className="recipe-details__list">
-              {recipe.method.mash_temp.length > 0 && <li>Mash temperature:
-                <table className="recipe-details__table">
-                  <thead>
-                    <tr>
-                      <th className="table__data-padding">Temperature</th>
-                      <th className="table__data-padding">Duration</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {recipe.method.mash_temp.map((mashItem, index) =>
-                      <tr key={index + mashItem.temp.value}>
-                        <td>{mashItem.temp.value}&#176;{mashItem.temp.unit.toLowerCase() === "celsius" && "C"}</td>
-                        <td className="table__data-padding">{mashItem.duration && mashItem.duration}</td>
+          <div className="recipe-details">
+            <div className="recipe-details__text">
+              <div className="recipe-details__method">Method:</div>
+              <ul className="recipe-details__list">
+                {recipe.method.mash_temp.length > 0 && <li>Mash temperature:
+                  <table className="recipe-details__table">
+                    <thead>
+                      <tr>
+                        <th className="table__data-padding">Temperature</th>
+                        <th className="table__data-padding">Duration</th>
                       </tr>
-                    )}
-                  </tbody>
-                </table>
-              </li>}
-              <li>Fermentation: {recipe.method.fermentation.temp.value}&#176;
-                {recipe.method.fermentation.temp.unit.toLowerCase() === "celsius" && "C"}</li>
-              {recipe.method.twist && <li>Twist: {recipe.method.twist}</li>}
-            </ul>
-            <div className="recipe-details__method">Ingredients:</div>
-            <ul className="recipe-details__list">
-              {recipe.ingredients.malt.length > 0 && <li>Malt:
-                <table className="recipe-details__table">
-                  <thead>
-                    <tr>
-                      <th className="table__data-padding">Name</th>
-                      <th className="table__data-padding">Amount</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {recipe.ingredients.malt.map((maltItem, index) =>
-                      <tr key={index + maltItem.name}>
-                        <td>{maltItem.name}</td>
-                        <td className="table__data-padding">{maltItem.amount.value} {maltItem.amount.unit}</td>
+                    </thead>
+                    <tbody>
+                      {recipe.method.mash_temp.map((mashItem, index) =>
+                        <tr key={index + mashItem.temp.value}>
+                          <td>{mashItem.temp.value}&#176;{mashItem.temp.unit.toLowerCase() === "celsius" && "C"}</td>
+                          <td className="table__data-padding">{mashItem.duration && mashItem.duration}</td>
+                        </tr>
+                      )}
+                    </tbody>
+                  </table>
+                </li>}
+                <li>Fermentation: {recipe.method.fermentation.temp.value}&#176;
+                  {recipe.method.fermentation.temp.unit.toLowerCase() === "celsius" && "C"}</li>
+                {recipe.method.twist && <li>Twist: {recipe.method.twist}</li>}
+              </ul>
+              <div className="recipe-details__method">Ingredients:</div>
+              <ul className="recipe-details__list">
+                {recipe.ingredients.malt.length > 0 && <li>Malt:
+                  <table className="recipe-details__table">
+                    <thead>
+                      <tr>
+                        <th className="table__data-padding">Name</th>
+                        <th className="table__data-padding">Amount</th>
                       </tr>
-                    )}
-                  </tbody>
-                </table>
-              </li>}
-              {recipe.ingredients.hops.length > 0 && <li>Hops:
-                <table className="recipe-details__table">
-                  <thead>
-                    <tr>
-                      <th className="table__data-padding">Name</th>
-                      <th className="table__data-padding">Amount</th>
-                      <th className="table__data-padding">Add</th>
-                      <th className="table__data-padding">Attribute</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {recipe.ingredients.hops.map((hopItem, index) =>
-                      <tr key={index + hopItem.name}>
-                        <td>{hopItem.name}</td>
-                        <td className="table__data-padding">{hopItem.amount.value} {hopItem.amount.unit}</td>
-                        <td className="table__data-padding">{hopItem.add === undefined ? "---" : hopItem.add}</td>
-                        <td className="table__data-padding">{hopItem.attribute === undefined ? "---" : hopItem.attribute}</td>
+                    </thead>
+                    <tbody>
+                      {recipe.ingredients.malt.map((maltItem, index) =>
+                        <tr key={index + maltItem.name}>
+                          <td>{maltItem.name}</td>
+                          <td className="table__data-padding">{maltItem.amount.value} {maltItem.amount.unit}</td>
+                        </tr>
+                      )}
+                    </tbody>
+                  </table>
+                </li>}
+                {recipe.ingredients.hops.length > 0 && <li>Hops:
+                  <table className="recipe-details__table">
+                    <thead>
+                      <tr>
+                        <th className="table__data-padding">Name</th>
+                        <th className="table__data-padding">Amount</th>
+                        <th className="table__data-padding">Add</th>
+                        <th className="table__data-padding">Attribute</th>
                       </tr>
-                    )}
-                  </tbody>
-                </table>
-              </li>}
-              <li>Yeast: {recipe.ingredients.yeast}</li>
-            </ul>
-            <div className="recipe-details__method">Food pairing:</div>
-            <ul className="recipe-details__list">
-              {recipe.food_pairing.map(pair =>
-                <li key={pair}>{pair}</li>
-              )}
-            </ul>
-            <div className="recipe-details__row">
-              <div className="recipe-details__row-name">Brewer's tips:</div>
-              <div className="recipe-details__row-value">{recipe.brewers_tips}</div>
-            </div>
-            <div className="recipe-details__row">
-              <div className="recipe-details__row-name">Contributed by:</div>
-              <div className="recipe-details__row-value">{recipe.contributed_by}</div>
+                    </thead>
+                    <tbody>
+                      {recipe.ingredients.hops.map((hopItem, index) =>
+                        <tr key={index + hopItem.name}>
+                          <td>{hopItem.name}</td>
+                          <td className="table__data-padding">{hopItem.amount.value} {hopItem.amount.unit}</td>
+                          <td className="table__data-padding">{hopItem.add === undefined ? "---" : hopItem.add}</td>
+                          <td className="table__data-padding">{hopItem.attribute === undefined ? "---" : hopItem.attribute}</td>
+                        </tr>
+                      )}
+                    </tbody>
+                  </table>
+                </li>}
+                <li>Yeast: {recipe.ingredients.yeast}</li>
+              </ul>
+              <div className="recipe-details__method">Food pairing:</div>
+              <ul className="recipe-details__list">
+                {recipe.food_pairing.map(pair =>
+                  <li key={pair}>{pair}</li>
+                )}
+              </ul>
+              <div className="recipe-details__row">
+                <div className="recipe-details__row-name">Brewer's tips:</div>
+                <div className="recipe-details__row-value">{recipe.brewers_tips}</div>
+              </div>
+              <div className="recipe-details__row">
+                <div className="recipe-details__row-name">Contributed by:</div>
+                <div className="recipe-details__row-value">{recipe.contributed_by}</div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    : isLoading
-      ? <div className="recipes-background"><Loader /></div>
       : <div className="recipes-background"><Error /></div>
 }

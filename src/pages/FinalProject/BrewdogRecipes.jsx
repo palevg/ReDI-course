@@ -1,4 +1,5 @@
 import { useContext, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { DataContext } from "../../context/DataContext";
 import { useFetching } from "../../hooks/useFetching";
 import FilterBar from '../../components/FinalProject/FilterBar';
@@ -6,21 +7,30 @@ import Recipe from '../../components/FinalProject/Recipe';
 import Loader from "../../components/Loader/Loader";
 
 export default function BrewdogRecipes() {
-  const { recipesList, setRecipesList, MinMaxValues, pageToLoad, setPageToLoad,
-    filterOptions, setFilterOptions, isLoadMore, setIsLoadMore } = useContext(DataContext);
+  const { recipesList, setRecipesList, filterOptions, setFilterOptions, MinMaxValues,
+    pageToLoad, setPageToLoad, isLoadMore, setIsLoadMore } = useContext(DataContext);
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  const [fetchRecipes, isLoading] = useFetching(async (newSearch, pageToLoad, filterOptions) => {
+  const listSorting = (list, field) => {
+    field === "name" && list.sort((a, b) => a.name > b.name ? 1 : -1);
+    field === "nameReverse" && list.sort((a, b) => a.name > b.name ? -1 : 1);
+    field === "year" && list.sort((a, b) => a.first_brewed.split("/").reverse().join("/") > b.first_brewed.split("/").reverse().join("/") ? 1 : -1);
+    field === "yearReverse" && list.sort((a, b) => a.first_brewed.split("/").reverse().join("/") > b.first_brewed.split("/").reverse().join("/") ? -1 : 1);
+    return list;
+  };
+
+  const [fetchRecipes, isLoading] = useFetching(async (newSearch, pageToLoad, filterValues) => {
     try {
-      const res = await fetch("https://api.punkapi.com/v2/beers?page=" + pageToLoad + filterOptions);
+      const res = await fetch("https://api.punkapi.com/v2/beers?page=" + pageToLoad + filterValues);
       const data = await res.json();
       data.length < MinMaxValues.recipesPerPage ? setIsLoadMore(false) : setIsLoadMore(true);
       setPageToLoad(pageToLoad + 1);
-      window.localStorage.setItem('sorting', '');
       if (newSearch) {
-        setPageToLoad(2);
-        setRecipesList(data);
+        data.length > 0
+          ? setRecipesList(listSorting(data, window.localStorage.getItem('sorting')))
+          : setRecipesList(data)
       } else {
-        setPageToLoad(pageToLoad + 1);
+        window.localStorage.setItem('sorting', '');
         setRecipesList([...recipesList, ...data]);
       }
     } catch (err) {
@@ -28,39 +38,33 @@ export default function BrewdogRecipes() {
     }
   });
 
-  const getStorageItem = (item, minMaxValue) => {
-    let itemValue;
-    window.localStorage.getItem(item)
-      ? itemValue = +window.localStorage.getItem(item)
-      : itemValue = minMaxValue
-    return itemValue;
-  }
-
   useEffect(() => {
-    const userFilter = {}
-    userFilter.yearMin = getStorageItem('yearMin', MinMaxValues.yearMin);
-    userFilter.yearMax = getStorageItem('yearMax', MinMaxValues.yearMax);
-    userFilter.abvMin = getStorageItem('abvMin', MinMaxValues.abvMin);
-    userFilter.abvMax = getStorageItem('abvMax', MinMaxValues.abvMax);
-    userFilter.ibuMin = getStorageItem('ibuMin', MinMaxValues.ibuMin);
-    userFilter.ibuMax = getStorageItem('ibuMax', MinMaxValues.ibuMax);
-
-    let filters = '';
-    if (userFilter.yearMin !== MinMaxValues.yearMin) filters += "&brewed_after=01-" + userFilter.yearMin;
-    if (userFilter.yearMax !== MinMaxValues.yearMax) filters += "&brewed_before=12-" + userFilter.yearMax;
-    if (userFilter.abvMin !== MinMaxValues.abvMin) filters += "&abv_gt=" + userFilter.abvMin;
-    if (userFilter.abvMax !== MinMaxValues.abvMax) filters += "&abv_lt=" + userFilter.abvMax;
-    if (userFilter.ibuMin !== MinMaxValues.ibuMin) filters += "&ibu_gt=" + userFilter.ibuMin;
-    if (userFilter.ibuMax !== MinMaxValues.ibuMax) filters += "&ibu_lt=" + userFilter.ibuMax;
-    setFilterOptions(filters);
+    const searchValues = {}
+    if (+window.localStorage.getItem("yearMin") !== MinMaxValues.yearMin) searchValues.brewed_year_min = window.localStorage.getItem("yearMin");
+    if (+window.localStorage.getItem("yearMax") !== MinMaxValues.yearMax) searchValues.brewed_year_max = window.localStorage.getItem("yearMax");
+    if (+window.localStorage.getItem("abvMin") !== MinMaxValues.abvMin) searchValues.abv_min = window.localStorage.getItem("abvMin");
+    if (+window.localStorage.getItem("abvMax") !== MinMaxValues.abvMax) searchValues.abv_max = window.localStorage.getItem("abvMax");
+    if (+window.localStorage.getItem("ibuMin") !== MinMaxValues.ibuMin) searchValues.ibu_min = window.localStorage.getItem("ibuMin");
+    if (+window.localStorage.getItem("ibuMax") !== MinMaxValues.ibuMax) searchValues.ibu_max = window.localStorage.getItem("ibuMax");
+    if (window.localStorage.getItem("name") !== '') searchValues.name = window.localStorage.getItem("name");
+    setSearchParams(searchValues);
 
     if (recipesList.length === 0) {
-      fetchRecipes(false, pageToLoad, filters);
+      let filters = "";
+      if ("brewed_year_min" in searchValues) filters += "&brewed_after=01-" + searchValues.brewed_year_min;
+      if ("brewed_year_max" in searchValues) filters += "&brewed_before=12-" + searchValues.brewed_year_max;
+      if ("abv_min" in searchValues) filters += "&abv_gt=" + searchValues.abv_min;
+      if ("abv_max" in searchValues) filters += "&abv_lt=" + searchValues.abv_max;
+      if ("ibu_min" in searchValues) filters += "&ibu_gt=" + searchValues.ibu_min;
+      if ("ibu_max" in searchValues) filters += "&ibu_lt=" + searchValues.ibu_max;
+      if ("name" in searchValues) filters += "&beer_name=" + searchValues.name;
+      setFilterOptions(filters);
+      fetchRecipes(true, pageToLoad, filters);
     }
   }, []);
 
   return <div className="recipes-background">
-    <FilterBar fetchRecipes={fetchRecipes} />
+    <FilterBar fetchRecipes={fetchRecipes} setSearchParams={setSearchParams} />
     {recipesList.length > 0
       ? <div className="recipes-list">
         {recipesList.map(recipe =>
