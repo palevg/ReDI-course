@@ -64,7 +64,7 @@ export default function BrewdogRecipes() {
   }, []);
 
   return <div className="recipes-background">
-    <FilterBar fetchRecipes={fetchRecipes} setSearchParams={setSearchParams} />
+    <FilterBar fetchRecipes={fetchRecipes} setSearchParams={setSearchParams} listSorting={listSorting} />
     {recipesList.length > 0
       ? <div className="recipes-list">
         {recipesList.map(recipe =>

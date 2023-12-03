@@ -15,21 +15,16 @@ const sortFields = [
   { value: 'yearReverse', label: 'First brewed year (new → old)' }
 ];
 
-export default function FilterBar({ fetchRecipes, setSearchParams }) {
+export default function FilterBar({ fetchRecipes, setSearchParams, listSorting }) {
   const { recipesList, setRecipesList } = useContext(DataContext);
   const [openDialog, setOpenDialog] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
   const navigate = useNavigate();
 
   const handleChangeSort = (type) => {
-    window.localStorage.setItem('sorting', type);
-    if (recipesList.length > 0) {
-      const newList = [...recipesList];
-      type === "name" && newList.sort((a, b) => a.name > b.name ? 1 : -1);
-      type === "nameReverse" && newList.sort((a, b) => a.name > b.name ? -1 : 1);
-      type === "year" && newList.sort((a, b) => a.first_brewed.split("/").reverse().join("/") > b.first_brewed.split("/").reverse().join("/") ? 1 : -1);
-      type === "yearReverse" && newList.sort((a, b) => a.first_brewed.split("/").reverse().join("/") > b.first_brewed.split("/").reverse().join("/") ? -1 : 1);
-      setRecipesList(newList);
+    if (window.localStorage.getItem('sorting') !== type) {
+      window.localStorage.setItem('sorting', type);
+      recipesList.length > 0 && setRecipesList(listSorting([...recipesList], type));
     }
     setAnchorEl(null);
   };
