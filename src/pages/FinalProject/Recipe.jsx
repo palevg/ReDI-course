@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { useFetching } from "../../hooks/useFetching";
+import useFetching from "../../hooks/useFetching";
 import Loader from "../../components/Loader/Loader";
 import { MyButton } from "../../data";
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';

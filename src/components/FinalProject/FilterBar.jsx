@@ -15,15 +15,15 @@ const sortFields = [
   { value: 'yearReverse', label: 'First brewed year (new → old)' }
 ];
 
-export default function FilterBar({ fetchRecipes, setSearchParams, listSorting }) {
-  const { recipesList, setRecipesList } = useContext(DataContext);
+export default function FilterBar({ fetchRecipes, searchParams, setSearchParams, listSorting }) {
+  const { beerData, recipesList, setRecipesList } = useContext(DataContext);
   const [openDialog, setOpenDialog] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
   const navigate = useNavigate();
 
   const handleChangeSort = (type) => {
-    if (window.localStorage.getItem('sorting') !== type) {
-      window.localStorage.setItem('sorting', type);
+    if (window.localStorage.getItem(beerData.sorting) !== type) {
+      window.localStorage.setItem(beerData.sorting, type);
       recipesList.length > 0 && setRecipesList(listSorting([...recipesList], type));
     }
     setAnchorEl(null);
@@ -58,7 +58,7 @@ export default function FilterBar({ fetchRecipes, setSearchParams, listSorting }
           <MenuItem
             key={option.value}
             onClick={() => handleChangeSort(option.value)}
-            sx={{ fontWeight: window.localStorage.getItem('sorting') === option.value ? "600" : "400" }}
+            sx={{ fontWeight: window.localStorage.getItem(beerData.sorting) === option.value ? "600" : "400" }}
           >{option.label}</MenuItem>
         )}
       </Menu>
@@ -71,6 +71,7 @@ export default function FilterBar({ fetchRecipes, setSearchParams, listSorting }
       openDialog={openDialog}
       setOpenDialog={setOpenDialog}
       fetchRecipes={fetchRecipes}
+      searchParams={searchParams}
       setSearchParams={setSearchParams} />
   </div>
 }

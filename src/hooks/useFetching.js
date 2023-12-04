@@ -1,6 +1,6 @@
-import { useState } from "react"
+import { useState } from "react";
 
-export const useFetching = (callback) => {
+export default function useFetching(callback) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
 
