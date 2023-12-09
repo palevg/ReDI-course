@@ -1,10 +1,10 @@
 import { useContext, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { DataContext } from "../../context/DataContext";
-import useFetching from "../../hooks/useFetching";
-import FilterBar from '../../components/FinalProject/FilterBar';
-import Recipe from '../../components/FinalProject/Recipe';
-import Loader from "../../components/Loader/Loader";
+import { DataContext } from "context/DataContext";
+import useFetching from "hooks/useFetching";
+import FilterBar from 'components/FinalProject/FilterBar';
+import Recipe from 'components/FinalProject/Recipe';
+import Loader from "components/Loader/Loader";
 
 export default function BrewdogRecipes() {
   const { recipesList, setRecipesList, filterOptions, setFilterOptions, beerData,
@@ -14,8 +14,10 @@ export default function BrewdogRecipes() {
   const listSorting = (list, field) => {
     field === "name" && list.sort((a, b) => a.name > b.name ? 1 : -1);
     field === "nameReverse" && list.sort((a, b) => a.name > b.name ? -1 : 1);
-    field === "year" && list.sort((a, b) => a.first_brewed.split("/").reverse().join("/") > b.first_brewed.split("/").reverse().join("/") ? 1 : -1);
-    field === "yearReverse" && list.sort((a, b) => a.first_brewed.split("/").reverse().join("/") > b.first_brewed.split("/").reverse().join("/") ? -1 : 1);
+    field === "year" && list.sort((a, b) =>
+      a.first_brewed.split("/").reverse().join("/") > b.first_brewed.split("/").reverse().join("/") ? 1 : -1);
+    field === "yearReverse" && list.sort((a, b) =>
+      a.first_brewed.split("/").reverse().join("/") > b.first_brewed.split("/").reverse().join("/") ? -1 : 1);
     return list;
   };
 
@@ -97,7 +99,11 @@ export default function BrewdogRecipes() {
   }, []);
 
   return <div className="recipes-background">
-    <FilterBar fetchRecipes={fetchRecipes} searchParams={searchParams} setSearchParams={setSearchParams} listSorting={listSorting} />
+    <FilterBar
+      fetchRecipes={fetchRecipes}
+      searchParams={searchParams}
+      setSearchParams={setSearchParams}
+      listSorting={listSorting} />
     {recipesList.length > 0
       ? <div className="recipes-list">
         {recipesList.map(recipe =>

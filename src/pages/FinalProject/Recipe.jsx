@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import useFetching from "../../hooks/useFetching";
-import Loader from "../../components/Loader/Loader";
-import { MyButton } from "../../data";
+import useFetching from "hooks/useFetching";
+import Loader from "components/Loader/Loader";
+import { MyButton } from "data";
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import Error from '../../pages/Error';
+import Error from 'pages/Error';
 
 function AddInfo({ hint, header }) {
   return <span className="question">?

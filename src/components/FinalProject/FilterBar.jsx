@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { DataContext } from "../../context/DataContext";
-import { MyButton } from '../../data';
+import { DataContext } from "context/DataContext";
+import { MyButton } from 'data';
 import { Menu, MenuItem } from "@mui/material";
 import FilterDialog from './FilterDialog';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';

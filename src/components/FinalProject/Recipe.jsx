@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { MyButton } from '../../data';
+import { MyButton } from 'data';
 
 export default function Recipe({ recipe }) {
   const navigate = useNavigate();

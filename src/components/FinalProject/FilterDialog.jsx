@@ -1,5 +1,5 @@
 import { useState, useContext } from 'react';
-import { DataContext } from "../../context/DataContext";
+import { DataContext } from "context/DataContext";
 import { Dialog, Box, DialogContent, TextField, DialogActions, Typography, Slider, Button } from "@mui/material";
 import FilterAltOffIcon from '@mui/icons-material/FilterAltOff';
 
@@ -64,16 +64,6 @@ export default function FilterDialog({ openDialog, setOpenDialog, fetchRecipes, 
     fetchRecipes(true, 1, filters);
     setOpenDialog(false);
   }
-
-  // useEffect(() => {
-  //   setSearchName(window.localStorage.getItem(beerData.name) || '');
-  //   if (window.localStorage.getItem(beerData.yearMinName) && window.localStorage.getItem(beerData.yearMaxName))
-  //     setYearValue([+window.localStorage.getItem(beerData.yearMinName), +window.localStorage.getItem(beerData.yearMaxName)]);
-  //   if (window.localStorage.getItem(beerData.abvMinName) && window.localStorage.getItem(beerData.abvMaxName))
-  //     setAbvValue([+window.localStorage.getItem(beerData.abvMinName), +window.localStorage.getItem(beerData.abvMaxName)]);
-  //   if (window.localStorage.getItem(beerData.ibuMinName) && window.localStorage.getItem(beerData.ibuMaxName))
-  //     setIbuValue([+window.localStorage.getItem(beerData.ibuMinName), +window.localStorage.getItem(beerData.ibuMaxName)]);
-  // }, []);
 
   return <Dialog maxWidth="xs" open={openDialog}>
     <Box sx={{ p: 1 }}>

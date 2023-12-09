@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import '../../styles/finalproj.scss';
+import 'styles/finalproj.scss';
 
 export default function FinalProject() {
 
